@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Tracker</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/32/2721/2721091.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-icons-png.flaticon.com/16/2721/2721091.png">
+    <link rel="shortcut icon" type="image/png" href="https://cdn-icons-png.flaticon.com/32/2721/2721091.png">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="balance-section">
+            <button id="subtractBtn" class="action-btn subtract-btn">−</button>
+            <div class="balance-display">
+                <h2>Current Balance</h2>
+                <h1 id="balance">0.00dt</h1>
+                <div class="summary">
+                    <div class="income">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Income: </span>
+                        <span id="totalIncome">0.00dt</span>
+                    </div>
+                    <div class="expenses">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>Expenses: </span>
+                        <span id="totalExpenses">0.00dt</span>
+                    </div>
+                </div>
+            </div>
+            <button id="addBtn" class="action-btn add-btn">+</button>
+        </div>
+
+        <div id="transactionForm" class="transaction-form hidden">
+            <input type="number" id="amountInput" placeholder="Enter amount" step="0.01">
+            <div class="category-input-group">
+                <select id="categoryInput" required>
+                    <option value="">Select Category</option>
+                    <option value="salary">Salary</option>
+                    <option value="food">Food & Dining</option>
+                    <option value="transport">Transportation</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="bills">Bills & Utilities</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="health">Health</option>
+                    <option value="other">Other</option>
+                </select>
+                <button type="button" id="newCategoryBtn" class="new-category-btn">
+                    <i class="fas fa-plus"></i> New Category
+                </button>
+            </div>
+            <input type="text" id="commentInput" placeholder="Add a comment (optional)">
+            <button id="confirmBtn">Confirm</button>
+            <button id="cancelBtn">Cancel</button>
+        </div>
+
+        <!-- New Category Modal -->
+        <div id="categoryModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Add New Category</h2>
+                <input type="text" id="newCategoryInput" placeholder="Enter category name">
+                <div class="modal-buttons">
+                    <button id="saveCategoryBtn">Save</button>
+                    <button id="cancelCategoryBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>Monthly Overview</h2>
+            <div id="categoryChart" class="category-chart">
+                <!-- Category bars will be added here -->
+            </div>
+        </div>
+
+        <div class="transactions-section">
+            <div class="transactions-header">
+                <h2>Transaction History</h2>
+                <div class="filter-section">
+                    <select id="filterCategory">
+                        <option value="all">All Categories</option>
+                        <option value="salary">Salary</option>
+                        <option value="food">Food & Dining</option>
+                        <option value="transport">Transportation</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bills">Bills & Utilities</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="filterType">
+                        <option value="all">All Types</option>
+                        <option value="add">Income</option>
+                        <option value="subtract">Expenses</option>
+                    </select>
+                </div>
+            </div>
+            <div id="transactionLog" class="transaction-log">
+                <!-- Transactions will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
